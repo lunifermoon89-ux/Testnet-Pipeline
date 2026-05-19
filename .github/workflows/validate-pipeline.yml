@@ -1,18 +1,25 @@
-name: Infrastructure Telemetry Validation
+name: Validate Testnet Pipeline
+
 on:
   push:
-    branches: [ main ]
-  schedule:
-    - cron: '0 */6 * * *'
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
 
 jobs:
-  verify-node:
+  run-pipeline:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Source Code
+      - name: Checkout Repository Code
         uses: actions/checkout@v4
 
-      - name: Validate Monitor Syntax
+      - name: Initialize JSON Processing Dependencies
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Execute Sync Monitor Pipeline
+        env:
+          ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
         run: |
-          bash -n monitor.sh
-          echo "[+] Architectural syntax validated successfully."
+          chmod +x ./monitor.sh
+          ./monitor.sh

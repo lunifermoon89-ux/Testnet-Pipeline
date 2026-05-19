@@ -1,11 +1,12 @@
-# Automated RPC Sync Monitor Node Pipeline
-An optimized, lightweight terminal infrastructure monitoring system deployed on **Pop!_OS Linux**.
+# ⚡ Arbitrum Testnet Pipeline
 
-## Technical Architecture
-* **Network Target:** Arbitrum Sepolia Testnet
-* **Gateway Provider:** Enterprise Alchemy Secure RPC Node Tunnel
-* **Data Layer:** Real-time JSON-RPC payload translation (Hexadecimal to Decimal calculations via `jq`)
-* **Execution Daemon:** Persistent background tracking script managed via an optimized OS thread.
+An optimized, automated infrastructure pipeline designed for tracking and validating EVM-compatible RPC endpoints.
 
-## Operational Metrics
-The background daemon continuously tracks blockchain synchronization metrics and computes latency step-jumps automatically, dumping validated logs into a local file system.
+## Architecture & Scope
+Built by Houdini Automation, this repository serves as a lightweight, secure background daemon for monitoring Arbitrum Sepolia sync metrics, processing real-time JSON-RPC payloads, and computing latency step-jumps without exposing underlying tunnel endpoints.
+
+## Technical Stack
+* **Target Network:** Arbitrum Sepolia (L2)
+* **Execution:** Bash / Shell Automation
+* **Data Parsing:** Native `jq` Hex-to-Decimal Translation
+* **Security:** GitHub Secrets Environment Injection (No hardcoded keys)
